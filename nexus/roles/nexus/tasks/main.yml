@@ -1,0 +1,31 @@
+---
+# tasks file for nexus
+
+  - name: create nexus namespace
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'namespace.yaml.j2') }}"
+
+
+  - name: create the dynamic persistent volume
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'pvc-nexus.yaml.j2') }}"
+    
+  - name: create nexus deployment
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'deploy.yaml.j2') }}"
+
+  - name: create the services
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
+    loop:
+      - service-clusterip
+      - service-node
+  - name: create nexus ingress
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'ingress-nexus.yaml.j2') }}"
+
