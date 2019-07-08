@@ -1,0 +1,5 @@
+-
+  name: install jenkins as a deployment with kubernetes
+  hosts: localhost 
+  roles:
+    - jenkins
