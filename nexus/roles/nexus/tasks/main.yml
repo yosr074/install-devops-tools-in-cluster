@@ -5,7 +5,16 @@
     command:  kubectl apply -f -
     args:
         stdin: "{{ lookup('template', 'namespace.yaml.j2') }}"
+  
+  - name: create nexus secret for the credentials
+    command:  kubectl apply -f -
+    args:
+       stdin: "{{ lookup('template', 'secret.yaml.j2') }}"
 
+#  - name: create the storage class
+ #   command:  kubectl apply -f -
+  #  args:
+   #     stdin: "{{ lookup('template', 'storage.yaml.j2') }}"
 
   - name: create the dynamic persistent volume
     command:  kubectl apply -f -
@@ -23,7 +32,7 @@
         stdin: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
     loop:
       - service-clusterip
-      - service-node
+      - service_jenkins
   - name: create nexus ingress
     command:  kubectl apply -f -
     args:
