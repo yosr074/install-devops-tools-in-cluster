@@ -1,0 +1,6 @@
+namespace: registry
+registry_port: 5000
+registry_domain: registry.wl.consulting
+registry_service_nodeport_port: 5001
+registry_target_port: 5000
+registry_nodeport: 30005 

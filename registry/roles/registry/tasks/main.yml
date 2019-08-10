@@ -1,0 +1,30 @@
+---
+# tasks file for nexus
+
+  - name: create registry namespace
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'namespace.yaml.j2') }}"
+  
+  - name: create registry secret in order to pull the image from it
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'secret.yaml.j2') }}"
+
+  - name: create registry deployment
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'deploy.yaml.j2') }}"
+
+  - name: create the services
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
+    loop:
+      - cluster-ip
+      - service
+  - name: create nexus ingress
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'ingress.yaml.j2') }}"
+

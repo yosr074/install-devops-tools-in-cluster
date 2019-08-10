@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry-clusterip
+  namespace: {{ namespace }}
+spec:
+  ports:
+  - port: {{ registry_port }}
+    protocol: TCP
+  selector:
+    name: registry
+

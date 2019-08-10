@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: registry-domain 
+  namespace: {{ namespace }}
+spec:
+  rules:
+  - host: {{ registry_domain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: registry-clusterip
+          servicePort: {{ registry_port }}
+

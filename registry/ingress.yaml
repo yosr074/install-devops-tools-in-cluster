@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: registry-domain
+spec:
+  rules:
+  - host: registry.wl.consulting
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: registry-clusterip
+          servicePort: 5000
+

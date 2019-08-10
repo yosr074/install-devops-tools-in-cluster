@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: registry
+  namespace: {{ namespace }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: registry
+    spec:
+      containers:
+      - resources:
+        name: registry
+        image: registry:2
+        ports:
+        - name: registry-port
+          containerPort: {{ registry_port }}
+        volumeMounts:
+        - mountPath: /var/lib/registry
+          name: images
+        - mountPath: /auth
+          name: auth
+        env:
+        - name: REGISTRY_AUTH
+          value: "htpasswd"
+        - name: REGISTRY_AUTH_HTPASSWD_REALM
+          value: "Registry Realm"
+        - name: REGISTRY_AUTH_HTPASSWD_PATH
+          value: /auth/registry.password
+      volumes:
+      - name: images
+        hostPath:
+          path: /home/vagrant/la/registry/images
+      - name: auth
+        hostPath:
+          path: /home/vagrant/la/registry/auth
+      
+

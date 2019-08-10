@@ -1,0 +1,6 @@
+-
+  name: install nexus as a deployment with kubernetes
+  hosts: localhost 
+  roles:
+    - registry
+
