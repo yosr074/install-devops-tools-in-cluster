@@ -1,5 +1,5 @@
 -
-  name: install nexus as a deployment with kubernetes
+  name: install private registry as a deployment with kubernetes
   hosts: localhost 
   roles:
     - registry

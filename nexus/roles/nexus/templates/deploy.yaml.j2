@@ -17,8 +17,9 @@ spec:
     spec:
       volumes:
       - name: nexus-data-vol
-        persistentVolumeClaim:
-         claimName: {{ pvc_nexus }}
+        hostPath:
+          path: /home/vagrant/la/nexus/datanexus
+  
       containers:
       - name: {{ nexus_deployment_name }}
         image: shifudao/nexus3

@@ -1,0 +1,19 @@
+
+# vars file for nexus
+
+nexus_deployment_name: nexus-deployment
+namespace: nexus
+replicas: 1
+container_name: nexus
+pvc_nexus: nexus-claim
+nexus_port: 8081
+nexus_host: artifact.wl.consulting
+nexus_service_clusterip_name: nexus-clusterip
+nexus_storage: 2Gi
+nexus_service_nodeport_name: nexus-nodeport
+nexus_target_port: 8081
+nexus_nodeport: 32000
+
+
+
+

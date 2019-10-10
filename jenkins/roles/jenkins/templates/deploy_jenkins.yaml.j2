@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: jenkins
+  name: {{ jenkins_deployment_name }}
+  namespace: {{ namespace }}
+spec:
+  replicas: {{ replicas }}
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: jenkins
+    spec:
+      securityContext:
+       fsGroup: 1000 
+       runAsUser: 0 
+      
+      containers:
+      - image: {{ jenkins_image }}
+        name: {{ pod_name }}
+        ports:
+        - containerPort: {{ jenkins_port }}
+        volumeMounts:
+        - mountPath: /var/jenkins_home
+          name: jenkins-data
+        - mountPath: /var/run/docker.sock
+          name: docker-socket
+        securityContext:
+          privileged: true
+
+
+      volumes:
+      - name: jenkins-data
+        hostPath:
+          path: /home/vagrant/la/jenkins/data
+
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock
+          
+          
+      

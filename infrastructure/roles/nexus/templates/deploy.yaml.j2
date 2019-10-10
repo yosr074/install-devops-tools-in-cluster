@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ nexus_deployment_name }}
+  namespace: {{ namespace }}
+  labels:
+   app: nexus
+spec:
+  replicas: {{ replicas }}
+  selector:
+    matchLabels:
+      app: nexus
+  template:
+    metadata:
+      labels:
+        app: nexus
+    spec:
+      volumes:
+      - name: nexus-data-vol
+        persistentVolumeClaim:
+         claimName: {{ pvc_nexus }}
+      containers:
+      - name: {{ nexus_deployment_name }}
+        image: shifudao/nexus3
+        resources:
+         limits:
+          memory: "4Gi"
+          cpu: "1000m"
+         requests:
+          memory: "2Gi"
+          cpu: "500m"
+ 
+        ports:
+        - containerPort: {{ nexus_port }}
+        env:
+        - name: secret-username
+          valueFrom:
+           secretKeyRef:
+            name: credentials-nexus
+            key: username
+        - name: secret-password
+          valueFrom:
+           secretKeyRef:
+            name: credentials-nexus
+            key: password
+        
+        volumeMounts:
+        - name: nexus-data-vol
+          mountPath: /nexus-data

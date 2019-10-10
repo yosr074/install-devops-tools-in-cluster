@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ nexus_service_nodeport_name }}
+  namespace: {{ namespace }}
+spec:
+  type: NodePort
+  ports:
+  - port: {{ nexus_port }}
+    targetPort: {{ nexus_target_port }}
+    protocol: TCP
+    nodePort: {{ nexus_nodeport }}
+  selector:
+    app: nexus3
+

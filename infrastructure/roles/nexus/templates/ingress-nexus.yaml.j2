@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nexus-domain
+  namespace: {{ namespace }}
+spec:
+  rules:
+  - host: {{ nexus_host }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ nexus_service_clusterip_name }}
+          servicePort: {{ nexus_port }}
+

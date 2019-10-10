@@ -1,0 +1,24 @@
+---
+# tasks file for jenkins
+
+  - name: create the dynamic persistent volume
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', '{{ item }}.yaml.j2') }}"
+    loop:
+      - storage-jenkins
+      - pvc
+      
+  name: create the dynamic persistent volume
+    command:  kubectl apply -f -
+    
+  
+  - name: create the services
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', '{{ item }}-service.yaml.j2') }}"
+    loop:
+      - redis
+      - db
+      - vote
+      - result

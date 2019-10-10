@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry
+  namespace: {{ namespace }}
+  labels:
+    name: registry
+spec:
+  ports:
+  - port: {{ registry_service_nodeport_port }}
+    targetPort: {{ registry_target_port }}
+    nodePort: {{ registry_nodeport }}
+  selector:
+    name: registry
+  type: NodePort

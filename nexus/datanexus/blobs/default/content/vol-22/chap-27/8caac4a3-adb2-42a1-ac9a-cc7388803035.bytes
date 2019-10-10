@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.wlconsulting</groupId>
+  <artifactId>springboot_app</artifactId>
+  <versioning>
+    <latest>1.0.4-SNAPSHOT</latest>
+    <versions>
+      <version>1.0.0-SNAPSHOT</version>
+      <version>1.0.1-SNAPSHOT</version>
+      <version>1.0.2-SNAPSHOT</version>
+      <version>1.0.3-SNAPSHOT</version>
+      <version>1.0.4-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20190909011307</lastUpdated>
+  </versioning>
+</metadata>

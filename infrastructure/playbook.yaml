@@ -1,0 +1,9 @@
+-
+  name: deploy  devops-tools  with kubernetes
+  hosts: localhost 
+  roles:
+    - jenkins
+    - nexus
+    - registry
+    - dashboard
+

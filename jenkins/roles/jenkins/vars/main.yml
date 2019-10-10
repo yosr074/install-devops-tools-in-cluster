@@ -1,0 +1,15 @@
+---
+# vars file for jenkins
+namespace: jenkins
+jenkins_service_clusterip_name: jenkins-docker-clusterip
+jenkins_port: 8080
+jenkins_deployment_name: jenkins-docker
+replicas: 1
+jenkins_image: yosr074/jenkins_docker
+pod_name: jenkins-docker
+pvc_jenkins: claim-jenkins
+jenkins_host: ci.wl.consulting
+jenkins_storage: 500Mi
+jenkins_service_nodeport_name: jenkins-docker
+jenkins_target_port: 8080
+jenkins_nodeport: 31002

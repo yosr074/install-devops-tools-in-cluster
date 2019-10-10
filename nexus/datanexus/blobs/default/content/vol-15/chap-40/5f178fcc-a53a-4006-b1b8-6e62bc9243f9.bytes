@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.wlconsulting</groupId>
+  <artifactId>springboot_app</artifactId>
+  <version>1.0.4-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20190909.173030</timestamp>
+      <buildNumber>11</buildNumber>
+    </snapshot>
+    <lastUpdated>20190909173030</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0.4-20190909.173030-11</value>
+        <updated>20190909173030</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0.4-20190909.170042-10</value>
+        <updated>20190909170042</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

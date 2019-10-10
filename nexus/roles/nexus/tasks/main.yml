@@ -16,10 +16,10 @@
   #  args:
    #     stdin: "{{ lookup('template', 'storage.yaml.j2') }}"
 
-  - name: create the dynamic persistent volume
-    command:  kubectl apply -f -
-    args:
-        stdin: "{{ lookup('template', 'pvc-nexus.yaml.j2') }}"
+#  - name: create the dynamic persistent volume
+ #   command:  kubectl apply -f -
+  #  args:
+   #     stdin: "{{ lookup('template', 'pvc-nexus.yaml.j2') }}"
     
   - name: create nexus deployment
     command:  kubectl apply -f -

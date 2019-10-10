@@ -1,0 +1,18 @@
+---
+# tasks file for dashboard
+
+
+  - name: create dashboard deployment
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'deploy-dashboard.yaml.j2') }}"
+
+  - name: create the services
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'service-dashboard.yaml.j2') }}"
+  - name: create dashboard ingress
+    command:  kubectl apply -f -
+    args:
+        stdin: "{{ lookup('template', 'ingress-dashboard.yaml.j2') }}"
+
