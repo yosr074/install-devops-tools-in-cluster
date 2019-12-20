@@ -31,6 +31,10 @@ spec:
           name: jenkins-data
         - mountPath: /var/run/docker.sock
           name: docker-socket
+        - mountPath: /var/jenkins_home/admin.conf
+          name: kuber
+ 
+
         securityContext:
           privileged: true
 
@@ -39,10 +43,15 @@ spec:
       - name: jenkins-data
         hostPath:
           path: /home/vagrant/la/jenkins/data
+       
+      - name: kuber
+        hostPath:
+          path: /etc/kubernetes/admin.conf
 
       - name: docker-socket
         hostPath:
           path: /var/run/docker.sock
+
           
           
       
